@@ -12,8 +12,8 @@ class ProductDetailsComponent extends Component{
   render(){
     return(
         <View style={styles.details_design}>
-            <Text style={styles.details_name}>Nike Air Max 200</Text>
-            <Text style={styles.details_description}>Built for natural motion, the nike flex shoes.</Text>
+            <Text style={styles.details_name}>{this.props.name}</Text>
+            <Text style={styles.details_description}>{this.props.description}</Text>
             <View style={styles.details_sizes}>
                 <View style={styles.details_sizes_text}>
                     <Text style={styles.details_sizetext_font}>size: </Text>

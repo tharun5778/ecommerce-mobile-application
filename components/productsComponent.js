@@ -13,15 +13,15 @@ import {
 class ProductsComponents extends Component{
 
   render(){
-      console.log((((Dimensions.get('window').width -40)/2)))
+    //   console.log(this.props.product)
     return(
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Details')}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Details', { productDetails:this.props.product})}>
             <View style={styles.product_item}>
                 <View style={styles.align}>
                     <View style={styles.top}>
                         <View style={styles.offer}>
                             <View style={styles.offer_design}>
-                                <Text style={styles.offer_font}>30%</Text>
+                                <Text style={styles.offer_font}>{this.props.product.offer}%</Text>
                             </View>
                         </View>
                         <View>
@@ -38,9 +38,9 @@ class ProductsComponents extends Component{
                         <Image source={require('../assets/iphone.jpg')}/>
                     </View>
                     <View style={styles.details}>
-                        <Text style={styles.details_name}>Nike Air Max 20</Text>
-                        <Text style={styles.details_price}>$ 240.00</Text>
-                        <Text style={styles.details_rating}>Rating</Text>
+                        <Text style={styles.details_name}>{this.props.product.name}</Text>
+                        <Text style={styles.details_price}>$ {this.props.product.price}</Text>
+                        <Text style={styles.details_rating}>{this.props.product.Rating}</Text>
                     </View>
                 </View>
             </View>

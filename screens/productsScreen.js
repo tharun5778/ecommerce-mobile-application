@@ -10,11 +10,12 @@ import {
 import products from '../productsData.json';
 import ProductsComponents from '../components/productsComponent'
 import HeaderComponent from "../components/headerComponent";
+import { connect } from 'react-redux';
 
 class ProductsScreen extends Component{
 
   render(){
-      console.log(Dimensions.get('window').width)
+      console.log(this.props.products)
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -56,7 +57,7 @@ class ProductsScreen extends Component{
                         <View style={styles.products}>
                             <FlatList
                             numColumns={2}
-                            data={products.Products}
+                            data={this.props.products}
                             keyExtractor={(item, index) => item.id}
                             renderItem={({ item, index }) =>
                                 <ProductsComponents product={item}
@@ -72,8 +73,12 @@ class ProductsScreen extends Component{
     )
   }
 }
-
-export default ProductsScreen;
+const mapStateToProps = state => {
+    return {
+        products: state.products,
+    };
+};
+export default connect(mapStateToProps)(ProductsScreen);
 
 const styles = StyleSheet.create({
     background:{
@@ -138,6 +143,5 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 18,
-        // backgroundColor: 'red'
     }
 })

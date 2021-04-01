@@ -11,8 +11,42 @@ import HeaderComponent from "../components/headerComponent";
 
 
 class ProductDetailsScreen extends Component{
-
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      description: '',
+      price: 0,
+      colour:[],
+      size:[],
+      isAdded:false,
+      offer:''
+    };
+  }
+  componentDidMount(){
+    const productDetails= this.props.route.params.productDetails;
+    const color = productDetails.colour.map((i)=>{
+      return {
+        colour: i,
+        isSelected: false
+      }
+    });
+    const size = productDetails.size.map((i)=>{
+      return {
+        size: i,
+        isSelected: false
+      }
+    });
+    this.setState({ name:productDetails.name, 
+      description:productDetails.description,
+      offer:productDetails.offer, 
+      price:productDetails.price,
+      color: color,
+      size: size,
+    });
+  }
   render(){
+    // console.log("hi",this.state.size)
     return(
       <View style={styles.container}>
         <View style={styles.header}>
@@ -23,7 +57,7 @@ class ProductDetailsScreen extends Component{
             <View style={styles.offer}>
               <View style={styles.offer_design}>
                 <View style={styles.offer_design_center}>
-                  <Text style={styles.offer_font}>30%</Text>
+                  <Text style={styles.offer_font}>{this.state.offer}%</Text>
                 </View>
               </View>
             </View>
@@ -33,10 +67,16 @@ class ProductDetailsScreen extends Component{
               </View>
               <View style={styles.background_2}>
                 <View style={styles.details}>
-                  <ProductDetailsComponent/>
+                  <ProductDetailsComponent name={this.state.name} 
+                    description={this.state.description} 
+                    colour={this.state.colour}
+                    size={this.state.size}
+                  />
                 </View>
                 <View style={styles.price}>
-                  <ProductPriceComponent/>
+                  <ProductPriceComponent price={this.state.price}
+                    isAdded={this.state.isAdded}
+                  />
                 </View>
               </View>
             </View>

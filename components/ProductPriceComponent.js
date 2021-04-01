@@ -15,11 +15,16 @@ class ProductPriceComponent extends Component{
     return(
       <View style={styles.container}>
           <View style={styles.priceContainer}>
-                  <Text style={styles.priceFontStyle}>$ 271.00</Text>
+                  <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
           </View>
           <View style={styles.AddToCartContainer}>
               <TouchableOpacity style={styles.AddToCartDesign}>
-                  <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
+                  {(this.props.isAdded == false) && (
+                      <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
+                  )}
+                  {!(this.props.isAdded == false) && (
+                      <Text style={styles.AddTOCartFontStyle}>Remove from cart</Text>
+                  )}
               </TouchableOpacity>
           </View>
       </View>
