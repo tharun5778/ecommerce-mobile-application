@@ -9,57 +9,65 @@ import {
 } from 'react-native';
 import products from '../productsData.json';
 import ProductsComponents from '../components/productsComponent'
+import HeaderComponent from "../components/headerComponent";
 
 class ProductsScreen extends Component{
 
   render(){
       console.log(Dimensions.get('window').width)
     return(
-        <View style={styles.background}>
-            <ScrollView>
-                <View style={styles.split}>
-                    <View style={styles.split_products}>
-                        <Text style={styles.split_products_font}>Our Products</Text>
-                    </View>
-                    <View style={styles.split_sort}>
-                        <Text style={styles.split_sort_font}>Sort by</Text>
-                    </View>
-                </View>
-                <View style={styles.hor_scrollview}>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-                        <View style={styles.item}>
-                            <Text>hello</Text>
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <HeaderComponent/>
+            </View>
+            <View style={styles.body}>
+                <View style={styles.background}>
+                    <ScrollView>
+                        <View style={styles.split}>
+                            <View style={styles.split_products}>
+                                <Text style={styles.split_products_font}>Our Products</Text>
+                            </View>
+                            <View style={styles.split_sort}>
+                                <Text style={styles.split_sort_font}>Sort by</Text>
+                            </View>
                         </View>
-                        <View style={styles.item}>
-                            <Text>hello</Text>
+                        <View style={styles.hor_scrollview}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                                <View style={styles.item}>
+                                    <Text>hello</Text>
+                                </View>
+                            </ScrollView>
                         </View>
-                        <View style={styles.item}>
-                            <Text>hello</Text>
-                        </View>
-                        <View style={styles.item}>
-                            <Text>hello</Text>
-                        </View>
-                        <View style={styles.item}>
-                            <Text>hello</Text>
-                        </View>
-                        <View style={styles.item}>
-                            <Text>hello</Text>
+                        <View style={styles.products}>
+                            <FlatList
+                            numColumns={2}
+                            data={products.Products}
+                            keyExtractor={(item, index) => item.id}
+                            renderItem={({ item, index }) =>
+                                <ProductsComponents product={item}
+                                navigation={this.props.navigation}
+                                /> 
+                                }
+                            />
                         </View>
                     </ScrollView>
                 </View>
-                <View style={styles.products}>
-                    <FlatList
-                    numColumns={2}
-                    data={products.Products}
-                    keyExtractor={(item, index) => item.id}
-                    renderItem={({ item, index }) =>
-                        <ProductsComponents product={item}
-                        navigation={this.props.navigation}
-                        /> 
-                        }
-                    />
-                </View>
-            </ScrollView>
+            </View>
         </View>
     )
   }
@@ -120,5 +128,16 @@ const styles = StyleSheet.create({
     },
     products: {
         marginTop: 20, 
+    },
+    container:{
+        flex:1,
+        flexDirection: 'column',
+    },
+    header: {
+        flex: 2,
+    },
+    body: {
+        flex: 18,
+        // backgroundColor: 'red'
     }
 })

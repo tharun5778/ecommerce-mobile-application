@@ -2,67 +2,54 @@
 	"Products" : [
 		{
 			"id": "1",
-			"item": "HP Laptop",
-			"model": "ENVY- X360",
-			"Price": "85000",
-			"ram": "8 GB",
-			"size": "15-inch",
-			"harddisk": "1 TB",	
-			"ssd":"256",
-			"quantity": 0,
-			"isAdded": false
+			"name": "Nike Air Max 20",
+			"description":"Built for natural motion, the Nike Flex shoes",
+			"price": 240.00,
+			"size":["6","7","8","9"],
+			"colour":["#db7d7d","#619946","#3e9e9e","#261123"],
+			"Rating":4.7,
+			"offer":30
 		},
 		{
 			"id": "2",
-			"item": "Dell Laptop",
-			"model":"XPS",
-			"Price": "110000",
-			"ram": "8 GB",
-			"size": "14-inch",
-			"ssd": "512",
-			"quantity": 0,
-			"isAdded": false
+			"name": "Reebok Air Max 20",
+			"description":"Built for natural motion, the Reebok Flex shoes",
+			"price": 240.00,
+			"size":["6","7","8","9"],
+			"colour":["#db7d7d","#619946","#3e9e9e","#261123"],
+			"Rating":4.1,
+			"offer":50
 					
 		},
 		{
 			"id": "3",
-			"item": "iphone",
-			"model":"12 pro",
-			"Price": "90000",
-			"storage": "64 GB",
-			"colour": "Red",
-			"quantity": 0,
-			"isAdded": false
+			"name": "Adidas Air Max 20",
+			"description":"Built for natural motion, the Adidas Flex shoes",
+			"price": 250.00,
+			"size":["6","7","8","9"],
+			"colour":["#db7d7d","#619946","#3e9e9e","#261123"],
+			"Rating":4.6,
+			"offer":10
 		},
 		{
 			"id": "4",
-			"item": "iphone",
-			"model":"12 pro",
-			"Price": "90000",
-			"storage": "64 GB",
-			"colour": "Red",
-			"quantity": 0,
-			"isAdded": false
+			"name": "Puma Air Max 20",
+			"description":"Built for natural motion, the Puma Flex shoes",
+			"price": 260.00,
+			"size":["6","7","8","9"],
+			"colour":["#db7d7d","#619946","#3e9e9e","#261123"],
+			"Rating":4.2,
+			"offer":30
 		},
 		{
 			"id": "5",
-			"item": "iphone",
-			"model":"12 pro",
-			"Price": "90000",
-			"storage": "64 GB",
-			"colour": "Red",
-			"quantity": 0,
-			"isAdded": false
-		},
-		{
-			"id": "6",
-			"item": "iphone",
-			"model":"12 pro",
-			"Price": "90000",
-			"storage": "64 GB",
-			"colour": "Red",
-			"quantity": 0,
-			"isAdded": false
+			"name": "Fila Air Max 20",
+			"description":"Built for natural motion, the Fila Flex shoes",
+			"price": 270.00,
+			"size":["6","7","8","9"],
+			"colour":["#db7d7d","#619946","#3e9e9e","#261123"],
+			"Rating":4.0,
+			"offer":35
 		}
 	]
 }

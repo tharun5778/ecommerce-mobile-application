@@ -7,30 +7,38 @@ import {
 } from 'react-native';
 import ProductDetailsComponent from "../components/productDetailsComponent";
 import ProductPriceComponent from '../components/ProductPriceComponent';
+import HeaderComponent from "../components/headerComponent";
 
 
 class ProductDetailsScreen extends Component{
 
   render(){
     return(
-      <View style={styles.main}>
-        <View style={styles.offer}>
-          <View style={styles.offer_design}>
-            <View style={styles.offer_design_center}>
-              <Text style={styles.offer_font}>30%</Text>
-            </View>
-          </View>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <HeaderComponent/>
         </View>
-        <View style={styles.background_1}>
-          <View style={styles.image}>
-
-          </View>
-          <View style={styles.background_2}>
-            <View style={styles.details}>
-              <ProductDetailsComponent/>
+        <View style={styles.body}>
+            <View style={styles.main}>
+            <View style={styles.offer}>
+              <View style={styles.offer_design}>
+                <View style={styles.offer_design_center}>
+                  <Text style={styles.offer_font}>30%</Text>
+                </View>
+              </View>
             </View>
-            <View style={styles.price}>
-              <ProductPriceComponent/>
+            <View style={styles.background_1}>
+              <View style={styles.image}>
+
+              </View>
+              <View style={styles.background_2}>
+                <View style={styles.details}>
+                  <ProductDetailsComponent/>
+                </View>
+                <View style={styles.price}>
+                  <ProductPriceComponent/>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -89,6 +97,16 @@ const styles = StyleSheet.create({
   offer_font:{
     fontFamily:'Poppins-Medium',
   },
+  container:{
+    flex:1,
+    flexDirection:'column'
+  },
+  header:{
+    flex: 2,
+  },
+  body:{
+    flex:18,
+  }
 })
 
 
