@@ -15,13 +15,7 @@ class ProductPriceComponent extends Component{
     return(
       <View style={styles.container}>
           <View style={styles.priceContainer}>
-              {(this.props.price == 0) && (
-                  <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
-              )}
-              {(!this.props.price == 0) && (
-                  <Text style={styles.priceFontStyle}>$ {this.props.price + this.props.tax}</Text>
-              )}
-                  
+              <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
           </View>
           <View style={styles.AddToCartContainer}>
               {(this.props.isAdded == false) && (

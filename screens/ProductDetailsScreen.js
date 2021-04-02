@@ -167,12 +167,16 @@ class ProductDetailsScreen extends Component{
     this.setState({colour: allColours})
   }
 
+  back(){
+    this.props.navigation.goBack(null)
+  }
+
   render(){
     // console.log("hi",this.state.isAdded)
     return(
       <View style={styles.container}>
         <View style={styles.header}>
-          <HeaderComponent/>
+          <HeaderComponent back={"arrow-back"} right={"heart-circle"} rightselect={this.props.route.params.isLiked} goback={this.back.bind(this)}/>
         </View>
         <View style={styles.body}>
             <View style={styles.main}>
@@ -185,7 +189,7 @@ class ProductDetailsScreen extends Component{
             </View>
             <View style={styles.background_1}>
               <View style={styles.image}>
-
+              
               </View>
               <View style={styles.background_2}>
                 <View style={styles.details}>

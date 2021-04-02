@@ -15,7 +15,13 @@ class CheckOutComponent extends Component{
     return(
       <View style={styles.container}>
           <View style={styles.priceContainer}>
-                  <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
+                  {/* <Text style={styles.priceFontStyle}>$ {this.props.price}</Text> */}
+                  {(this.props.price == 0) && (
+                    <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
+                  )}
+                  {(!this.props.price == 0) && (
+                    <Text style={styles.priceFontStyle}>$ {this.props.price + this.props.tax}</Text>
+                  )}
           </View>
           <View style={styles.AddToCartContainer}>
                 <TouchableOpacity style={styles.AddToCartDesign}>

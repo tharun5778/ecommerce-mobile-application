@@ -75,11 +75,15 @@ class CartScreen extends Component{
     // return (price)
   }
 
+  back(){
+    this.props.navigation.goBack(null)
+  }
+
   render(){
     return(
       <View style={styles.maincontainer}>
         <View style={styles.header}>
-          <HeaderComponent/>
+          <HeaderComponent back={"arrow-back"} goback={this.back.bind(this)} right={"ios-trash-bin-sharp"}/>
         </View>
         <View style={styles.body}>
           <View style={styles.container}>

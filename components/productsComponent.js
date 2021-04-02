@@ -8,14 +8,27 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+
 
 
 class ProductsComponents extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+          isLiked:false
+        };
+      }
+
+      like(){
+        this.setState({isLiked: ! this.state.isLiked})
+    }
 
   render(){
     //   console.log(this.props.product)
     return(
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Details', { productDetails:this.props.product})}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Details', { productDetails:this.props.product, isLiked:this.state.isLiked})}>
             <View style={styles.product_item}>
                 <View style={styles.align}>
                     <View style={styles.top}>
@@ -26,9 +39,13 @@ class ProductsComponents extends Component{
                         </View>
                         <View>
                             <View style={styles.like}>
-                                <View style={styles.like_design}>
-                                    <Text>Like</Text>
-                                </View>
+                                <TouchableOpacity onPress={()=>this.like()}>
+                                    {/* <TouchableOpacity> */}
+                                        <Text>
+                                            <Icon name={"heart-circle"} size={20} color={this.state.isLiked == true? "red": "#000000" } />
+                                        </Text>
+                                    {/* </TouchableOpacity> */}
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>

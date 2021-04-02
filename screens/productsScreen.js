@@ -14,12 +14,17 @@ import { connect } from 'react-redux';
 
 class ProductsScreen extends Component{
 
+
+    back(){
+        alert("hello");
+    }
+
   render(){
       console.log(this.props.products)
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <HeaderComponent/>
+                <HeaderComponent back={"menu"} goback={this.back.bind(this)} right={"search"}/>
             </View>
             <View style={styles.body}>
                 <View style={styles.background}>
