@@ -18,17 +18,17 @@ class CartCardComponent extends Component{
                     <Text>image</Text>
                 </View>
                 <View style={styles.cardMain}>
-                    <Text style={styles.cardItemName}>Nike Air Max 20</Text>
-                    <Text style={styles.cardItemPrice}>$ 240.00</Text>
+                    <Text style={styles.cardItemName}>{this.props.product.name}</Text>
+                    <Text style={styles.cardItemPrice}>$ {this.props.product.price}</Text>
                 </View>
                 <View style={styles.cardQuantity}>
-                    <TouchableOpacity style={styles.increaseButton}>
+                    <TouchableOpacity style={styles.increaseButton} onPress={()=>this.props.increase(this.props.product)} >
                         <Text style={styles.quantityText}>
                         +
                         </Text>
                     </TouchableOpacity>
-                    <Text style={styles.quantityText}>5</Text>
-                    <TouchableOpacity style={styles.decreaseButton}>
+                    <Text style={styles.quantityText}>{this.props.product.quantity}</Text>
+                    <TouchableOpacity style={styles.decreaseButton} onPress={()=>this.props.decrease(this.props.product)} >
                         <Text style={styles.quantityText}>
                         -
                         </Text>

@@ -1,4 +1,3 @@
-export const DECREASE = "DECREASE";
-export const INCREASE = "INCREASE";
+export const QUANTITYCHANGE = "QUANTITYCHANGE";
 export const ADD = "ADD";
 export const REMOVE = "REMOVE";

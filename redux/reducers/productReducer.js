@@ -1,5 +1,5 @@
 import Products from '../../productsData.json';
-import { ADD, REMOVE } from "../actions/productActions";
+import { ADD, QUANTITYCHANGE, REMOVE } from "../actions/productActions";
 const initialStore = {
     products: Products.Products,
     cartProducts: [],
@@ -12,6 +12,10 @@ function productReducer(state = initialStore, action) {
         return {...state, cartProducts : action.payload.cartProducts}
     }
     if(action.type == REMOVE){
+        console.log('state',action.payload.cartProducts)
+        return {...state, cartProducts : action.payload.cartProducts}
+    }
+    if(action.type == QUANTITYCHANGE){
         console.log('state',action.payload.cartProducts)
         return {...state, cartProducts : action.payload.cartProducts}
     }

@@ -9,39 +9,25 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import ProductDetailsComponent from "../components/productDetailsComponent";
 
 
-class ProductPriceComponent extends Component{
+class CheckOutComponent extends Component{
 
   render(){
     return(
       <View style={styles.container}>
           <View style={styles.priceContainer}>
-              {(this.props.price == 0) && (
                   <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
-              )}
-              {(!this.props.price == 0) && (
-                  <Text style={styles.priceFontStyle}>$ {this.props.price + this.props.tax}</Text>
-              )}
-                  
           </View>
           <View style={styles.AddToCartContainer}>
-              {(this.props.isAdded == false) && (
-                    <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.add()}>
-                        <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
-                    </TouchableOpacity>
-              )}
-              
-              {!(this.props.isAdded == false) && (
-                    <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.remove()}>
-                        <Text style={styles.RemoveFromCartFontStyle}>Remove from cart</Text>
-                    </TouchableOpacity>
-              )}
+                <TouchableOpacity style={styles.AddToCartDesign}>
+                    <Text style={styles.AddTOCartFontStyle}>Check Out</Text>
+                </TouchableOpacity>
           </View>
       </View>
     )
   }
 }
 
-export default ProductPriceComponent;
+export default CheckOutComponent;
 
 const styles = StyleSheet.create({
     container: {

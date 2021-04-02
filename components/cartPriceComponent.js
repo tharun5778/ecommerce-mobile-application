@@ -8,12 +8,20 @@ import {
 
 
 class CartPriceComponent extends Component{
+    constructor(props){
+    super(props);
+    this.state = {
+      cartProducts:[],
+      subTotal:0.00
+    };
+  }
+
 
   render(){
     return(
         <View style={styles.pricContainer}>
             <View style={styles.subtotal}>
-                <Text style={styles.textFont}>Subtotal: $ 1250</Text>
+                <Text style={styles.textFont}>Subtotal: $ {this.props.subTotal}</Text>
             </View >
             <View style={styles.tax}>
                 <Text style={styles.textFont}>Taxes: 40</Text>
