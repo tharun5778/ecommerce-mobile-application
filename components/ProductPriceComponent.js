@@ -18,14 +18,17 @@ class ProductPriceComponent extends Component{
                   <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
           </View>
           <View style={styles.AddToCartContainer}>
-              <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.add()}>
-                  {(this.props.isAdded == false) && (
-                      <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
-                  )}
-                  {!(this.props.isAdded == false) && (
-                      <Text style={styles.RemoveFromCartFontStyle}>Remove from cart</Text>
-                  )}
-              </TouchableOpacity>
+              {(this.props.isAdded == false) && (
+                    <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.add()}>
+                        <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
+                    </TouchableOpacity>
+              )}
+              
+              {!(this.props.isAdded == false) && (
+                    <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.remove()}>
+                        <Text style={styles.RemoveFromCartFontStyle}>Remove from cart</Text>
+                    </TouchableOpacity>
+              )}
           </View>
       </View>
     )

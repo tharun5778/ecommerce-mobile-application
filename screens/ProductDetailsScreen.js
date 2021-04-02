@@ -5,7 +5,7 @@ import {
   Button,
   StyleSheet
 } from 'react-native';
-import { ADD } from "../redux/actions/productActions";
+import { ADD, REMOVE } from "../redux/actions/productActions";
 import ProductDetailsComponent from "../components/productDetailsComponent";
 import ProductPriceComponent from '../components/ProductPriceComponent';
 import HeaderComponent from "../components/headerComponent";
@@ -29,26 +29,49 @@ class ProductDetailsScreen extends Component{
   }
   componentDidMount(){
     const productDetails= this.props.route.params.productDetails;
-    const color = productDetails.colour.map((i)=>{
-      return {
-        colour: i,
-        isSelected: false
+    const cartProducts = this.props.cartProducts;
+    var isMatched = false;
+    var matchedProductData = [];
+    cartProducts.map((i)=>{
+      if(i.id == productDetails.id){
+        isMatched = true;
+        matchedProductData = i;
       }
-    });
-    const size = productDetails.size.map((i)=>{
-      return {
-        size: i,
-        isSelected: false
-      }
-    });
-    this.setState({ name:productDetails.name, 
-      description:productDetails.description,
-      offer:productDetails.offer, 
-      price:productDetails.price,
-      colour: color,
-      size: size,
-      id:productDetails.id
-    });
+    })
+
+    if(isMatched == true){
+      this.setState({ name:matchedProductData.name, 
+        description:matchedProductData.description,
+        offer:productDetails.offer, 
+        price:productDetails.price,
+        colour: matchedProductData.colour,
+        size: matchedProductData.size,
+        id:productDetails.id,
+        isAdded: true
+      });
+    }else{
+      const color = productDetails.colour.map((i)=>{
+        return {
+          colour: i,
+          isSelected: false
+        }
+      });
+      const size = productDetails.size.map((i)=>{
+        return {
+          size: i,
+          isSelected: false
+        }
+      });
+      this.setState({ name:productDetails.name, 
+        description:productDetails.description,
+        offer:productDetails.offer, 
+        price:productDetails.price,
+        colour: color,
+        size: size,
+        id:productDetails.id
+      });
+    }
+
   }
 
   addToCart(){
@@ -72,6 +95,7 @@ class ProductDetailsScreen extends Component{
         addedProduct.description = this.state.description;
         addedProduct.price = this.state.price;
         addedProduct.size = this.state.size;
+        addedProduct.colour = this.state.colour;
         addedProduct.id = this.props.route.params.productDetails.id;
         addedProduct.quantity = 1;
         cartProducts = [...cartProducts, addedProduct]
@@ -92,6 +116,7 @@ class ProductDetailsScreen extends Component{
           addedProduct.description = this.state.description;
           addedProduct.price = this.state.price;
           addedProduct.size = this.state.size;
+          addedProduct.colour = this.state.colour;
           addedProduct.id = this.props.route.params.productDetails.id;
           addedProduct.quantity = 1;
           cartProducts = [...cartProducts, addedProduct]
@@ -104,6 +129,18 @@ class ProductDetailsScreen extends Component{
     }else{
       alert(" color or size is not selected")
     }
+  }
+
+  removeFromCart(){
+    var cartProducts = this.props.cartProducts;
+    remainingCartProducts = cartProducts.filter((i)=>{
+      if(i.id == this.state.id){
+        this.setState({isAdded: false})
+      }
+      return i.id != this.state.id;
+    })
+    this.props.remove(remainingCartProducts)
+    console.log(remainingCartProducts)
   }
 
   sizeSelect(selectedSize){
@@ -164,6 +201,7 @@ class ProductDetailsScreen extends Component{
                   <ProductPriceComponent price={this.state.price}
                     isAdded={this.state.isAdded}
                     add={this.addToCart.bind(this)}
+                    remove={this.removeFromCart.bind(this)}
                   />
                 </View>
               </View>
@@ -183,6 +221,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     add: (cartProducts) => dispatch({ type: ADD, payload : { cartProducts: cartProducts} }),
+    remove: (cartProducts) => dispatch({type: REMOVE , payload : {cartProducts: cartProducts}}),
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailsScreen);
