@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  FlatList
 } from 'react-native';
 
 
@@ -15,28 +16,19 @@ class ProductDetailsComponent extends Component{
             <Text style={styles.details_name}>{this.props.name}</Text>
             <Text style={styles.details_description}>{this.props.description}</Text>
             <View style={styles.details_sizes}>
-                <View style={styles.details_sizes_text}>
-                    <Text style={styles.details_sizetext_font}>size: </Text>
+                <View style={styles.detailsSizeText}>
+                    <Text style={styles.details_sizetext_font}>Size:</Text>
                 </View>
-                <View style={styles.details_sizes_text}>
-                    <View style={styles.details_sizes_background}>
-                        <Text style={styles.details_sizes_font}>US 16</Text>
-                    </View>
-                </View>
-                <View style={styles.details_sizes_text}>
-                    <View style={styles.details_sizes_background}>
-                        <Text style={styles.details_sizes_font}>US 16</Text>
-                    </View>
-                </View>
-                <View style={styles.details_sizes_text}>
-                    <View style={styles.details_sizes_background}>
-                        <Text style={styles.details_sizes_font}>US 16</Text>
-                    </View>
-                </View>
-                <View style={styles.details_sizes_text}>
-                    <View style={styles.details_sizes_background}>
-                        <Text style={styles.details_sizes_font}>US 16</Text>
-                    </View>
+                <View style={styles.detailsColorFlex}>
+                    {this.props.size.map((i)=>{
+                        return(
+                            <TouchableOpacity style={styles.color_items} onPress={()=>this.props.selectSize(i.size)}>
+                                <View style={styles.details_sizes_background}>
+                                    <Text style={styles.details_sizes_font}>Us {i.size}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })}
                 </View>
 
             </View>
@@ -45,26 +37,15 @@ class ProductDetailsComponent extends Component{
                     <Text style={styles.details_sizetext_font}>Available Color:</Text>
                 </View>
                 <View style={styles.details_color_flex}>
-                    <View style={styles.color_items}>
-                        <View style={styles.color_items_design}>
-                            
-                        </View>
-                    </View>
-                    <View style={styles.color_items}>
-                        <View style={styles.color_items_design}>
-                            
-                        </View>
-                    </View>
-                    <View style={styles.color_items}>
-                        <View style={styles.color_items_design}>
-                            
-                        </View>
-                    </View>
-                    <View style={styles.color_items}>
-                        <View style={styles.color_items_design}>
-                            
-                        </View>
-                    </View>
+                    {this.props.colour.map((i)=>{
+                        return(
+                            <TouchableOpacity style={styles.color_items} onPress={()=>this.props.selectColour(i.colour)}>
+                                <View style={styles.color_items_design}>
+                                    
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })}
                 </View>
             </View>
         </View>
@@ -77,7 +58,8 @@ export default ProductDetailsComponent;
 const styles = StyleSheet.create({
     details_design:{
         marginLeft:25,
-        marginTop:15
+        marginTop:15,
+        marginRight: 10
     },
     details_name:{
         fontFamily:'Poppins-Medium',
@@ -117,7 +99,7 @@ const styles = StyleSheet.create({
     },
     details_sizes_font: {
         fontFamily:'Poppins-Medium',
-        fontSize:18,
+        fontSize:13,
         color:'#000000'
     },
     details_color:{
@@ -143,5 +125,16 @@ const styles = StyleSheet.create({
         width:18,
         backgroundColor:'red',
         borderRadius:50
+    },
+    detailsColorFlex:{
+        flex:1,
+        flexDirection:'column'
+    },
+    detailsSizeText:{
+        flex: 1
+    },
+    detailsColorFlex:{
+        flex: 5,
+        flexDirection: 'row'
     }
 })

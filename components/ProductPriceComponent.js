@@ -18,12 +18,12 @@ class ProductPriceComponent extends Component{
                   <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
           </View>
           <View style={styles.AddToCartContainer}>
-              <TouchableOpacity style={styles.AddToCartDesign}>
+              <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.add()}>
                   {(this.props.isAdded == false) && (
                       <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
                   )}
                   {!(this.props.isAdded == false) && (
-                      <Text style={styles.AddTOCartFontStyle}>Remove from cart</Text>
+                      <Text style={styles.RemoveFromCartFontStyle}>Remove from cart</Text>
                   )}
               </TouchableOpacity>
           </View>
@@ -67,6 +67,12 @@ const styles = StyleSheet.create({
     AddTOCartFontStyle:{
         fontFamily:'Poppins-Medium',
         fontSize:20,
+        color:'#000000',
+        color: '#0d51e0'
+    },
+    RemoveFromCartFontStyle:{
+        fontFamily:'Poppins-Medium',
+        fontSize:13,
         color:'#000000',
         color: '#0d51e0'
     }

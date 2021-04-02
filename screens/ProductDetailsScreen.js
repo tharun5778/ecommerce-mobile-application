@@ -5,9 +5,12 @@ import {
   Button,
   StyleSheet
 } from 'react-native';
+import { ADD } from "../redux/actions/productActions";
 import ProductDetailsComponent from "../components/productDetailsComponent";
 import ProductPriceComponent from '../components/ProductPriceComponent';
 import HeaderComponent from "../components/headerComponent";
+import { connect } from 'react-redux';
+
 
 
 class ProductDetailsScreen extends Component{
@@ -20,7 +23,8 @@ class ProductDetailsScreen extends Component{
       colour:[],
       size:[],
       isAdded:false,
-      offer:''
+      offer:'',
+      id:''
     };
   }
   componentDidMount(){
@@ -41,12 +45,93 @@ class ProductDetailsScreen extends Component{
       description:productDetails.description,
       offer:productDetails.offer, 
       price:productDetails.price,
-      color: color,
+      colour: color,
       size: size,
+      id:productDetails.id
     });
   }
+
+  addToCart(){
+    var cartProducts = this.props.cartProducts;
+    var clr = false;
+    var siz = false;
+    this.state.colour.map((i)=>{
+      if(i.isSelected == true){
+        clr = true
+      }
+    })
+    this.state.size.map((i)=>{
+      if(i.isSelected == true){
+        siz = true
+      }
+    })
+    if((siz == true) && (clr == true)){
+      if(this.props.cartProducts.length == 0){
+        const addedProduct = {}
+        addedProduct.name = this.state.name;
+        addedProduct.description = this.state.description;
+        addedProduct.price = this.state.price;
+        addedProduct.size = this.state.size;
+        addedProduct.id = this.props.route.params.productDetails.id;
+        addedProduct.quantity = 1;
+        cartProducts = [...cartProducts, addedProduct]
+        this.props.add(cartProducts);
+        this.setState({isAdded : true})
+      }else{
+        var isMatched = false;
+        cartProducts.map((i)=>{
+          if(i.id == this.state.id){
+            isMatched = true;
+          }
+        })
+
+
+        if(isMatched == false){
+          const addedProduct = {}
+          addedProduct.name = this.state.name;
+          addedProduct.description = this.state.description;
+          addedProduct.price = this.state.price;
+          addedProduct.size = this.state.size;
+          addedProduct.id = this.props.route.params.productDetails.id;
+          addedProduct.quantity = 1;
+          cartProducts = [...cartProducts, addedProduct]
+          this.props.add(cartProducts)
+          this.setState({isAdded : true})
+        }else{
+          alert("already added in the cart")
+        }
+      }
+    }else{
+      alert(" color or size is not selected")
+    }
+  }
+
+  sizeSelect(selectedSize){
+    const allSizes = this.state.size;
+    allSizes.map((i)=>{
+      if(i.size == selectedSize){
+       i.isSelected = true
+      }else{
+        i.isSelected = false
+      }
+    })
+    this.setState({size:allSizes})
+  }
+
+  colourSelect(selectedColour){
+    const allColours = this.state.colour;
+    allColours.map((i)=>{
+      if(i.colour == selectedColour){
+        i.isSelected = true
+      }else{
+        i.isSelected = false
+      }
+    })
+    this.setState({colour: allColours})
+  }
+
   render(){
-    // console.log("hi",this.state.size)
+    // console.log("hi",this.state.isAdded)
     return(
       <View style={styles.container}>
         <View style={styles.header}>
@@ -71,11 +156,14 @@ class ProductDetailsScreen extends Component{
                     description={this.state.description} 
                     colour={this.state.colour}
                     size={this.state.size}
+                    selectSize={this.sizeSelect.bind(this)}
+                    selectColour={this.colourSelect.bind(this)} 
                   />
                 </View>
                 <View style={styles.price}>
                   <ProductPriceComponent price={this.state.price}
                     isAdded={this.state.isAdded}
+                    add={this.addToCart.bind(this)}
                   />
                 </View>
               </View>
@@ -87,7 +175,17 @@ class ProductDetailsScreen extends Component{
   }
 }
 
-export default ProductDetailsScreen;
+const mapStateToProps = state => {
+  return {
+      cartProducts: state.cartProducts,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (cartProducts) => dispatch({ type: ADD, payload : { cartProducts: cartProducts} }),
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailsScreen);
 
 const styles = StyleSheet.create({
   main:{

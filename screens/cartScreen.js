@@ -43,7 +43,7 @@ class CartScreen extends Component{
               <CartPriceComponent/>
             </View>
             <View style={styles.checkOutContainer}>
-              <ProductPriceComponent/>
+              {/* <ProductPriceComponent/> */}
             </View>
           </View>
         </View>
