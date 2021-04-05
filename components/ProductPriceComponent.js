@@ -60,8 +60,12 @@ const styles = StyleSheet.create({
         color:'#000000'
     },
     AddToCartDesign: {
-        width:150,
-        height:45,
+        // width:150,
+        // height:45,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight:15,
+        paddingLeft:15,
         backgroundColor: '#e3e3e3',
         borderRadius:50,
         justifyContent: 'center',
@@ -75,8 +79,7 @@ const styles = StyleSheet.create({
     },
     RemoveFromCartFontStyle:{
         fontFamily:'Poppins-Medium',
-        fontSize:13,
-        color:'#000000',
+        fontSize:15,
         color: '#0d51e0'
     }
 

@@ -22,17 +22,33 @@ class CartCardComponent extends Component{
                     <Text style={styles.cardItemPrice}>$ {this.props.product.price}</Text>
                 </View>
                 <View style={styles.cardQuantity}>
-                    <TouchableOpacity style={styles.increaseButton} onPress={()=>this.props.increase(this.props.product)} >
-                        <Text style={styles.quantityText}>
+                  <View style={{flex: 1, justifyContent: 'center',alignItems: 'center'}}>
+                    <TouchableOpacity style={{backgroundColor:'#8fe1eb', paddingLeft: 5, paddingRight: 5, borderRadius:50}} onPress={()=>this.props.increase(this.props.product)}>
+                      <Text>+</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{flex: 1, justifyContent: 'center',alignItems: 'center'}}>
+                    <Text style={styles.quantityText}>{this.props.product.quantity}</Text>
+                  </View>
+                  <View style={{flex: 1, justifyContent: 'center',alignItems: 'center'}}>
+                    <TouchableOpacity style={{backgroundColor:'#8fe1eb', paddingLeft: 5, paddingRight: 5, borderRadius:50}} onPress={()=>this.props.decrease(this.props.product)}>
+                      <Text>-</Text>
+                    </TouchableOpacity>
+                  </View>
+                    {/* <View style={styles.increaseButton} onPress={()=>this.props.increase(this.props.product)} >
+                      <TouchableOpacity>
+                      <Text style={styles.quantityText}>
                         +
                         </Text>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+                    </View>
+                    
                     <Text style={styles.quantityText}>{this.props.product.quantity}</Text>
                     <TouchableOpacity style={styles.decreaseButton} onPress={()=>this.props.decrease(this.props.product)} >
                         <Text style={styles.quantityText}>
                         -
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         </View>
@@ -91,8 +107,12 @@ const styles = StyleSheet.create({
       color: '#0d51e0'
     },
     increaseButton:{
-      height:25,
-      width:25,
+      // height:25,
+      // width:25,
+      paddingTop:5,
+      paddingLeft:5,
+      paddingBottom:5,
+      paddingRight: 5,
       backgroundColor:'#8fe1eb',
       justifyContent:'center',
       alignItems:'center',

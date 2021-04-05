@@ -56,7 +56,10 @@ class ProductsComponents extends Component{
                     </View>
                     <View style={styles.details}>
                         <Text style={styles.details_name}>{this.props.product.name}</Text>
-                        <Text style={styles.details_price}>$ {this.props.product.price}</Text>
+                        <View style={{flexDirection: 'row'}}>
+                            <Text style={{fontFamily:'Poppins-Medium', color:'#005ce6', fontSize:15, marginTop: 3}}>$ </Text>
+                            <Text style={styles.details_price}>{this.props.product.price}</Text>
+                        </View>
                         <Text style={styles.details_rating}>{this.props.product.Rating}</Text>
                     </View>
                 </View>
@@ -96,10 +99,16 @@ const styles = StyleSheet.create({
     like: {
         flex: 1,
         flexDirection: 'row-reverse',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     offer_design:{
-        width: 45,
-        height:20,
+        // width: 45,
+        // height:20,
+        // paddingBottom:2,
+        paddingLeft:10,
+        paddingRight:10,
+        paddingTop:5,
         backgroundColor:'#77d2d9',
         justifyContent:'center',
         alignItems: 'center',
@@ -133,16 +142,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         // marginTop: 3,
         fontFamily:'Poppins-Medium',
-        // marginBottom: 5
+        // marginBottom: 5,
+        color: '#005ce6'
+        
     },
     details_price:{
         fontSize: 23,
         fontFamily:'Poppins-Medium',
+        color: '#005ce6'
     },
     details_rating:{
         fontFamily:'Poppins-Medium',
         fontSize:15,
-        marginBottom:1
+        marginBottom:1,
+        color: '#005ce6'
     },
     offer_font:{
         fontFamily:'Poppins-Medium',

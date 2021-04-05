@@ -28,13 +28,27 @@ class CartScreen extends Component{
     };
   }
 
-  UNSAFE_componentWillMount(){
+  componentDidMount(){
     
     var price = 0;
     this.props.cartProducts.map((i)=>{
       price = price + (i.price * i.quantity)
     })
     this.setState({cartProducts:this.props.cartProducts, subTotal: price});
+  }
+
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      var price = 0;
+      this.props.cartProducts.map((i)=>{
+        price = price + (i.price * i.quantity)
+      })
+      this.setState({cartProducts:this.props.cartProducts, subTotal: price});
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
 
@@ -90,7 +104,7 @@ class CartScreen extends Component{
             <View style={styles.cartItemsContainer}>
             {(this.props.cartProducts.length == 0) && (<Text>Cart is empty</Text>)}
             {(!this.props.cartProducts.length == 0) && (
-              <ScrollView>
+              <ScrollView  showsVerticalScrollIndicator={false}>
                 <FlatList
                   data={this.props.cartProducts}
                   keyExtractor={(item, index) => item.id}

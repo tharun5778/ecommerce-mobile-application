@@ -21,10 +21,12 @@ class CartPriceComponent extends Component{
     return(
         <View style={styles.pricContainer}>
             <View style={styles.subtotal}>
-                <Text style={styles.textFont}>Subtotal: $ {this.props.subTotal}</Text>
+                <Text style={styles.textFontcolor}>Subtotal: $</Text>
+                <Text style={styles.textFont}> {this.props.subTotal}</Text>
             </View >
             <View style={styles.tax}>
-                <Text style={styles.textFont}>Taxes: 40</Text>
+                <Text style={styles.textFontcolor}>Taxes:</Text>
+                <Text style={styles.textFont}> 40</Text>
             </View>
         </View>
 
@@ -45,17 +47,24 @@ const styles = StyleSheet.create({
     subtotal:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center', 
+        flexDirection: 'row'
     },
     tax:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        flexDirection:'row'
     },
     textFont:{
         fontFamily:'Poppins-Medium',
         fontSize:18,
         color: '#000000'
+    },
+    textFontcolor:{
+        fontFamily:'Poppins-Medium',
+        fontSize:18,
+        color: '#595959'
     }
 })
 

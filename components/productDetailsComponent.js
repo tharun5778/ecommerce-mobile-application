@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 class ProductDetailsComponent extends Component{
@@ -23,9 +24,16 @@ class ProductDetailsComponent extends Component{
                     {this.props.size.map((i)=>{
                         return(
                             <TouchableOpacity style={styles.color_items} onPress={()=>this.props.selectSize(i.size)}>
-                                <View style={styles.details_sizes_background}>
-                                    <Text style={styles.details_sizes_font}>Us {i.size}</Text>
-                                </View>
+                                    {(i.isSelected == true) && (
+                                        <View style={styles.details_sizes_background}>
+                                            <Text style={styles.details_sizes_font}>Us {i.size}</Text>
+                                        </View>
+                                    )}
+                                    {(i.isSelected == false) && (
+                                        <View style={styles.details_sizes_background1}>
+                                            <Text style={styles.details_sizes_font}>Us {i.size}</Text>
+                                        </View>
+                                    )}
                             </TouchableOpacity>
                         )
                     })}
@@ -95,6 +103,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 8,
         backgroundColor: '#77d2d9',
+        flex: 1
+    },
+    details_sizes_background1:{
+        // height:15,
+        width:45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+        backgroundColor: '#e3e3e3',
         flex: 1
     },
     details_sizes_font: {

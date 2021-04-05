@@ -40,22 +40,22 @@ class ProductsScreen extends Component{
                         <View style={styles.hor_scrollview}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>Sneakers</Text>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>Watch</Text>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>Backpack</Text>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>Mobiles</Text>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>hello</Text>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text>hello</Text>
+                                    <Text style={styles.horScrollFont}>hello</Text>
                                 </View>
                             </ScrollView>
                         </View>
@@ -99,8 +99,13 @@ const styles = StyleSheet.create({
     split_products:{
         flex: 1,
         flexDirection: 'row',
-        // marginLeft: 15,
+        marginLeft: 15,
         marginTop:5,
+    },
+    horScrollFont:{
+        fontFamily:'Poppins-Medium',
+        fontSize:15,
+        color: '#0d51e0'
     },
     split_sort:{
         flex: 1,
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
     },
     split_products_font: {
         fontSize: 25,
-        fontFamily: 'Poppins-Medium'
+        fontFamily: 'Poppins-SemiBold'
     },
     split_sort_font:{
         fontSize: 15,
@@ -124,12 +129,16 @@ const styles = StyleSheet.create({
     hor_scrollview : {
         marginTop: 15,
         // marginRight: 10,
-        // marginLeft: 10
+        marginLeft: 15
     },
     item:{
-        height: 35,
-        width: 100,
-        backgroundColor: 'red',
+        // height: 35,
+        // width: 100,
+        paddingTop:10,
+        paddingBottom:10,
+        paddingRight:20,
+        paddingLeft:20,
+        backgroundColor: '#ffffff',
         // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
