@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import ProductDetailsComponent from "../components/productDetailsComponent";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 class ProductPriceComponent extends Component{
@@ -21,13 +21,18 @@ class ProductPriceComponent extends Component{
           <View style={styles.AddToCartContainer}>
               {(this.props.isAdded == false) && (
                     <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.add()}>
-                        <Text style={styles.AddTOCartFontStyle}>Add to cart</Text>
+                        <Text style={styles.AddTOCartFontStyle}>
+                            <Icon name={'cart'} size={20} color="#0d51e0" /> Add to cart
+                    </Text>
                     </TouchableOpacity>
               )}
               
               {!(this.props.isAdded == false) && (
                     <TouchableOpacity style={styles.AddToCartDesign} onPress={()=>this.props.remove()}>
-                        <Text style={styles.RemoveFromCartFontStyle}>Remove from cart</Text>
+                        <Text style={styles.RemoveFromCartFontStyle}>
+                            
+                            Remove from cart
+                        </Text>
                     </TouchableOpacity>
               )}
           </View>

@@ -25,7 +25,8 @@ class ProductDetailsScreen extends Component{
       size:[],
       isAdded:false,
       offer:'',
-      id:''
+      id:'',
+      rating:0
     };
   }
   componentDidMount(){
@@ -48,7 +49,8 @@ class ProductDetailsScreen extends Component{
         colour: matchedProductData.colour,
         size: matchedProductData.size,
         id:productDetails.id,
-        isAdded: true
+        isAdded: true,
+        rating:productDetails.Rating
       });
     }else{
       const color = productDetails.colour.map((i)=>{
@@ -69,7 +71,8 @@ class ProductDetailsScreen extends Component{
         price:productDetails.price,
         colour: color,
         size: size,
-        id:productDetails.id
+        id:productDetails.id,
+        rating:productDetails.Rating
       });
     }
 
@@ -198,6 +201,7 @@ class ProductDetailsScreen extends Component{
                     description={this.state.description} 
                     colour={this.state.colour}
                     size={this.state.size}
+                    rating={this.state.rating}
                     selectSize={this.sizeSelect.bind(this)}
                     selectColour={this.colourSelect.bind(this)} 
                   />

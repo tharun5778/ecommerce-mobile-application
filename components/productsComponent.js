@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AirbnbRating, Rating} from 'react-native-ratings';
+import { Rating} from 'react-native-ratings';
 
 
 
@@ -76,7 +76,7 @@ class ProductsComponents extends Component{
                                 //  } }
                                 
                             />
-                            <Text style={{fontFamily:'Poppins-Medium', fontSize: 12}}> (4.7)</Text>
+                            <Text style={{fontFamily:'Poppins-Medium', fontSize: 12, color:'#757575'}}> ({this.props.product.Rating})</Text>
                         </View>
 
                     </View>

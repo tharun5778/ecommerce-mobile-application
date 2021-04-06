@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import ProductDetailsComponent from "../components/productDetailsComponent";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 class CheckOutComponent extends Component{
@@ -31,7 +31,9 @@ class CheckOutComponent extends Component{
           </View>
           <View style={styles.AddToCartContainer}>
                 <TouchableOpacity style={styles.AddToCartDesign}>
-                    <Text style={styles.AddTOCartFontStyle}>Check Out</Text>
+                    <Text style={styles.AddTOCartFontStyle}>
+                      <Icon name={'ios-log-out'} size={20} color="#ffffff" /> Check Out
+                    </Text>
                 </TouchableOpacity>
           </View>
       </View>

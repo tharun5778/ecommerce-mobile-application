@@ -21,7 +21,7 @@ class ProductsScreen extends Component{
     }
 
   render(){
-      console.log(this.props.products)
+    //   console.log(this.props.products)
     return(
         <View style={styles.container}>
             <View style={styles.header}>

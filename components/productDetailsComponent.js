@@ -7,14 +7,28 @@ import {
   FlatList
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import { Rating} from 'react-native-ratings';
 
 
 class ProductDetailsComponent extends Component{
-
   render(){
+    //   console.log(this.props.rating)
     return(
         <View style={styles.details_design}>
-            <Text style={styles.details_name}>{this.props.name}</Text>
+            <View style={{flexDirection:'row'}}>
+                <View style={{flex:3,flexDirection:'row'}}>
+                    <Text style={styles.details_name}>{this.props.name}</Text>
+                </View>
+                
+                <View style={{flex: 1,flexDirection:'row-reverse', backgroundColor:'#e3e3e3',marginLeft:20, alignItems:'center'}}>
+                        <View style={{flexDirection:'row' }}>
+                            <Icon name="ios-star-sharp" size={20} color="#f1c40f" />
+                            <Text style={{fontFamily:'Poppins-Medium', fontSize:13, color:'#525252'}}> ({this.props.rating})</Text>
+                        </View>
+                        
+                </View>
+            </View>
+            
             <Text style={styles.details_description}>{this.props.description}</Text>
             <View style={styles.details_sizes}>
                 <View style={styles.detailsSizeText}>
