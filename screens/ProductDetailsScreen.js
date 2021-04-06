@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Button,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 import { ADD, REMOVE } from "../redux/actions/productActions";
 import ProductDetailsComponent from "../components/productDetailsComponent";
@@ -176,7 +177,7 @@ class ProductDetailsScreen extends Component{
     return(
       <View style={styles.container}>
         <View style={styles.header}>
-          <HeaderComponent back={"arrow-back"} right={"heart-circle"} rightselect={this.props.route.params.isLiked} goback={this.back.bind(this)}/>
+          <HeaderComponent back={"arrow-back"} right={"heart-circle"} rightselect={this.props.route.params.isLiked} goback={this.back.bind(this)} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
         </View>
         <View style={styles.body}>
             <View style={styles.main}>
@@ -189,7 +190,7 @@ class ProductDetailsScreen extends Component{
             </View>
             <View style={styles.background_1}>
               <View style={styles.image}>
-              
+                <Image source={require('../assets/iphone.jpg')} style={{width:250, height:250}}/>
               </View>
               <View style={styles.background_2}>
                 <View style={styles.details}>
@@ -243,7 +244,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   image:{
-    flex:6
+    flex:6,
+    justifyContent:'center',
+    alignItems:'center'
   },
   background_2:{
     flex:6,

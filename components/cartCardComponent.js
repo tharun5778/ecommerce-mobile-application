@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Button,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -15,11 +16,14 @@ class CartCardComponent extends Component{
         <View style={styles.cartCard}>
             <View style={styles.cartCardContainer}>
                 <View style={styles.cardImage}>
-                    <Text>image</Text>
+                <Image source={require('../assets/iphone.jpg')} style={{width:70, height:70}}/>
                 </View>
                 <View style={styles.cardMain}>
                     <Text style={styles.cardItemName}>{this.props.product.name}</Text>
-                    <Text style={styles.cardItemPrice}>$ {this.props.product.price}</Text>
+                    <View style={{flexDirection:'row'}}>
+                    <Text style={{fontFamily:'Poppins-Medium', marginTop:3, fontSize: 13, color:'#0d51e0'}}>$ </Text>
+                    <Text style={styles.cardItemPrice}>{this.props.product.price}</Text>
+                    </View>
                 </View>
                 <View style={styles.cardQuantity}>
                   <View style={{flex: 1, justifyContent: 'center',alignItems: 'center'}}>
@@ -84,7 +88,9 @@ const styles = StyleSheet.create({
       marginBottom:5
     },
     cardImage: {
-      flex:2
+      flex:2,
+      justifyContent:'center',
+      alignItems:'center'
     },
     cardMain:{
       flex: 4,

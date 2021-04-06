@@ -17,10 +17,16 @@ class CheckOutComponent extends Component{
           <View style={styles.priceContainer}>
                   {/* <Text style={styles.priceFontStyle}>$ {this.props.price}</Text> */}
                   {(this.props.price == 0) && (
-                    <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
+                    <View style={{flexDirection:'row'}}>
+                      <Text style={{fontFamily: 'Poppins-Medium', marginTop:4}}>$ </Text>
+                      <Text style={styles.priceFontStyle}>{this.props.price}.00</Text>
+                    </View>
                   )}
                   {(!this.props.price == 0) && (
-                    <Text style={styles.priceFontStyle}>$ {this.props.price + this.props.tax}</Text>
+                    <View style={{flexDirection:'row'}}>
+                      <Text style={{fontFamily: 'Poppins-Medium', marginTop:4}}>$ </Text>
+                      <Text style={styles.priceFontStyle}>{this.props.price}.00</Text>
+                  </View>
                   )}
           </View>
           <View style={styles.AddToCartContainer}>
@@ -45,7 +51,8 @@ const styles = StyleSheet.create({
     priceContainer:{
         flex:1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
     },
     AddToCartContainer:{
         flex:1,
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     },
     AddTOCartFontStyle:{
         fontFamily:'Poppins-Medium',
-        fontSize:20,
+        fontSize:15,
         color:'#ffffff',
     },
     RemoveFromCartFontStyle:{

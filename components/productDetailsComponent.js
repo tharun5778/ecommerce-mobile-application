@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   FlatList
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 class ProductDetailsComponent extends Component{
@@ -48,9 +48,16 @@ class ProductDetailsComponent extends Component{
                     {this.props.colour.map((i)=>{
                         return(
                             <TouchableOpacity style={styles.color_items} onPress={()=>this.props.selectColour(i.colour)}>
-                                <View style={styles.color_items_design}>
-                                    
-                                </View>
+                                {(i.isSelected == false) && (
+                                    <View>
+                                        <Icon name="ellipse-sharp" size={20} color={i.colour} />
+                                    </View>    
+                                )}
+                                {(i.isSelected == true) && (
+                                    <View style={{backgroundColor:'#77d2d9', paddingTop:5,paddingBottom:5, justifyContent:'center', alignItems:'center', borderRadius:13, paddingLeft:13,paddingRight:13}}>
+                                        <Icon name="ellipse-sharp" size={20} color={i.colour} />
+                                    </View>    
+                                )}
                             </TouchableOpacity>
                         )
                     })}
@@ -98,7 +105,12 @@ const styles = StyleSheet.create({
     },
     details_sizes_background:{
         // height:15,
-        width:45,
+        // width:45,
+        // padding:8,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight:15,
+        paddingLeft:15,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 8,
@@ -125,7 +137,8 @@ const styles = StyleSheet.create({
         marginBottom:10
     },
     details_color_text: {
-        flex: 2
+        flex: 2,
+        justifyContent:'center'
     },
     details_color_flex: {
         flex: 3,
@@ -138,8 +151,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     color_items_design:{
-        height:18,
-        width:18,
+        height:13,
+        width:13,
         backgroundColor:'red',
         borderRadius:50
     },

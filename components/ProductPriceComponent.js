@@ -15,7 +15,8 @@ class ProductPriceComponent extends Component{
     return(
       <View style={styles.container}>
           <View style={styles.priceContainer}>
-              <Text style={styles.priceFontStyle}>$ {this.props.price}</Text>
+              <Text style={{fontFamily:'Poppins-Medium', marginBottom:7}}>$ </Text>
+              <Text style={styles.priceFontStyle}>{this.props.price}.00</Text>
           </View>
           <View style={styles.AddToCartContainer}>
               {(this.props.isAdded == false) && (
@@ -47,7 +48,8 @@ const styles = StyleSheet.create({
     priceContainer:{
         flex:1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     AddToCartContainer:{
         flex:1,

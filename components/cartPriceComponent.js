@@ -22,7 +22,7 @@ class CartPriceComponent extends Component{
         <View style={styles.pricContainer}>
             <View style={styles.subtotal}>
                 <Text style={styles.textFontcolor}>Subtotal: $</Text>
-                <Text style={styles.textFont}> {this.props.subTotal}</Text>
+                <Text style={styles.textFont}> {this.props.subTotal}.00</Text>
             </View >
             <View style={styles.tax}>
                 <Text style={styles.textFontcolor}>Taxes:</Text>

@@ -5,7 +5,8 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native';
 import products from '../productsData.json';
 import ProductsComponents from '../components/productsComponent'
@@ -24,7 +25,7 @@ class ProductsScreen extends Component{
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <HeaderComponent back={"menu"} goback={this.back.bind(this)} right={"search"}/>
+                <HeaderComponent back={"menu"} goback={this.back.bind(this)} right={"search"} style={{backgroundColor:'#f2f2f2', flex: 1, flexDirection:'row'}}/>
             </View>
             <View style={styles.body}>
                 <View style={styles.background}>
@@ -40,22 +41,36 @@ class ProductsScreen extends Component{
                         <View style={styles.hor_scrollview}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                 <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>Sneakers</Text>
+                                    <View >
+                                        <Image source={require('../assets/iphone.jpg')} style={{width:30, height:30}}/>
+                                    </View>
+                                    <View style={{marginLeft:8}}>
+                                        <Text style={styles.horScrollFont}>Sneakers</Text>
+                                    </View>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>Watch</Text>
+                                    <View>
+                                        <Image source={require('../assets/iphone.jpg')} style={{width:30, height:30}}/>
+                                    </View>
+                                    <View style={{marginLeft:8}}>
+                                        <Text style={styles.horScrollFont}>watch</Text>
+                                    </View>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>Backpack</Text>
+                                    <View>
+                                        <Image source={require('../assets/iphone.jpg')} style={{width:30, height:30}}/>
+                                    </View>
+                                    <View style={{marginLeft:8}}>
+                                        <Text style={styles.horScrollFont}>Backpak</Text>
+                                    </View>
                                 </View>
                                 <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>Mobiles</Text>
-                                </View>
-                                <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>hello</Text>
-                                </View>
-                                <View style={styles.item}>
-                                    <Text style={styles.horScrollFont}>hello</Text>
+                                    <View>
+                                        <Image source={require('../assets/iphone.jpg')} style={{width:30, height:30}}/>
+                                    </View>
+                                    <View style={{marginLeft:8}}>
+                                        <Text style={styles.horScrollFont}>Mobiles</Text>
+                                    </View>
                                 </View>
                             </ScrollView>
                         </View>
@@ -143,7 +158,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        flexDirection:'row'
     },
     products: {
         marginTop: 20, 

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { AirbnbRating, Rating} from 'react-native-ratings';
 
 
 
@@ -42,7 +43,7 @@ class ProductsComponents extends Component{
                                 <TouchableOpacity onPress={()=>this.like()}>
                                     {/* <TouchableOpacity> */}
                                         <Text>
-                                            <Icon name={"heart-circle"} size={20} color={this.state.isLiked == true? "red": "#000000" } />
+                                            <Icon name={"heart-circle"} size={25} color={this.state.isLiked == true? "red": "#000000" } />
                                         </Text>
                                     {/* </TouchableOpacity> */}
                                 </TouchableOpacity>
@@ -52,7 +53,7 @@ class ProductsComponents extends Component{
                 </View>
                 <View style={styles.container}>
                     <View style={styles.image}>
-                        <Image source={require('../assets/iphone.jpg')}/>
+                        <Image source={require('../assets/iphone.jpg')} style={{width:100, height:100}}/>
                     </View>
                     <View style={styles.details}>
                         <Text style={styles.details_name}>{this.props.product.name}</Text>
@@ -60,7 +61,24 @@ class ProductsComponents extends Component{
                             <Text style={{fontFamily:'Poppins-Medium', color:'#005ce6', fontSize:15, marginTop: 3}}>$ </Text>
                             <Text style={styles.details_price}>{this.props.product.price}</Text>
                         </View>
-                        <Text style={styles.details_rating}>{this.props.product.Rating}</Text>
+                        {/* <Text style={styles.details_rating}>{this.props.product.Rating}</Text> */}
+                        <View style={{flexDirection:'row'}}>
+                            <Rating
+                                type='star'
+                                ratingCount={5}
+                                imageSize={15}
+                                onFinishRating={this.ratingCompleted}
+                                readonly={true}
+                                startingValue={this.props.product.Rating}
+                                // style={{}}
+                                // starStyle: { {
+                                //     margin: 3 
+                                //  } }
+                                
+                            />
+                            <Text style={{fontFamily:'Poppins-Medium', fontSize: 12}}> (4.7)</Text>
+                        </View>
+
                     </View>
                 </View>
             </View>
@@ -74,7 +92,7 @@ export default ProductsComponents;
 const styles = StyleSheet.create({
     product_item:{
         // flex: 1,
-        height: 340,
+        height: 280,
         width: (((Dimensions.get('window').width -40)/2)),
         backgroundColor: '#ffffff',
         marginLeft: 10,
@@ -128,13 +146,14 @@ const styles = StyleSheet.create({
         // backgroundColor:'red',
     },
     image:{
-        flex:2,
+        flex:10,
         // backgroundColor:'red'
         alignItems: 'center',
         justifyContent:'center'
+
     },
     details:{
-        flex:1,
+        flex:9,
         alignItems: 'center',
         // justifyContent: 'center'
     },
