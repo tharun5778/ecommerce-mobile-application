@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Rating} from 'react-native-ratings';
+import Stars from 'react-native-stars';
+import { color } from 'react-native-reanimated';
+
 
 
 
@@ -18,13 +21,20 @@ class ProductsComponents extends Component{
     constructor(props){
         super(props);
         this.state = {
-          isLiked:false
+          isLiked:false,
+          starCount: 3.5
         };
       }
 
       like(){
         this.setState({isLiked: ! this.state.isLiked})
     }
+
+    onStarRatingPress(rating) {
+        this.setState({
+          starCount: rating
+        });
+      }
 
   render(){
     //   console.log(this.props.product)
@@ -63,18 +73,31 @@ class ProductsComponents extends Component{
                         </View>
                         {/* <Text style={styles.details_rating}>{this.props.product.Rating}</Text> */}
                         <View style={{flexDirection:'row'}}>
-                            <Rating
+                            {/* <Rating
                                 type='star'
                                 ratingCount={5}
                                 imageSize={15}
                                 onFinishRating={this.ratingCompleted}
                                 readonly={true}
                                 startingValue={this.props.product.Rating}
-                                // style={{}}
+                                // ratingBackgroundColor={'red'}
+                                style={{}}
                                 // starStyle: { {
                                 //     margin: 3 
                                 //  } }
                                 
+                            /> */}
+
+                            <Stars
+                                // default={2.5}
+                                count={5}
+                                half={true}
+                                spacing={5}
+                                display={this.props.product.Rating}
+                                // starSize={15}
+                                fullStar={<Icon name={'ios-star-sharp'} size={15} style={{color:'yellow'}}/>}
+                                emptyStar={<Icon name={'ios-star-outline'} size={15} style={{color:'yellow'}}/>}
+                                // halfStar={<Icon name={'ios-star-half-sharp'} size={15} style={{color:'yellow'}}/>}
                             />
                             <Text style={{fontFamily:'Poppins-Medium', fontSize: 12, color:'#757575'}}> ({this.props.product.Rating})</Text>
                         </View>
@@ -179,6 +202,16 @@ const styles = StyleSheet.create({
     offer_font:{
         fontFamily:'Poppins-Medium',
         // fontSize:13
+    },
+    myStarStyle: {
+        color: 'yellow',
+        // backgroundColor: 'transparent',
+        // textShadowColor: 'black',
+        // textShadowOffset: {width: 1, height: 1},
+        // textShadowRadius: 2,
+    },
+    myEmptyStarStyle: {
+        color: '#707070',
     }
 
   })

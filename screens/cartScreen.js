@@ -97,7 +97,7 @@ class CartScreen extends Component{
     return(
       <View style={styles.maincontainer}>
         <View style={styles.header}>
-          <HeaderComponent back={"arrow-back"} goback={this.back.bind(this)} right={"ios-trash-bin-sharp"} style={{backgroundColor:'#f2f2f2', flex: 1, flexDirection:'row'}}/>
+          <HeaderComponent back={"arrow-back"} goback={this.back.bind(this)} right={"ios-trash-bin-sharp"} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
         </View>
         <View style={styles.body}>
           <View style={styles.container}>

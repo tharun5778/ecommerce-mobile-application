@@ -23,16 +23,18 @@ function MainTab() {
               }
 
               return <Ionicons name={iconName} size={30} color={color} />;
-            },
-          })}
+            }
+          }
+          )}
           tabBarOptions={{
             activeTintColor: '#2b3e9e',
             inactiveTintColor: '#bfbfbf',
-            showLabel:false
+            showLabel:false,
+
           }}
         >
-            <Tab.Screen name="Home" component={ProductsScreen} />
-            <Tab.Screen name="cart" component={CartScreen} />
+            <Tab.Screen name="Home" component={ProductsScreen}/>
+            <Tab.Screen name="cart" component={CartScreen} options={{ tabBarVisible: false }}/>
          </Tab.Navigator>
   );
 }
