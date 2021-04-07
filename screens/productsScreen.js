@@ -12,6 +12,9 @@ import products from '../productsData.json';
 import ProductsComponents from '../components/productsComponent'
 import HeaderComponent from "../components/headerComponent";
 import { connect } from 'react-redux';
+import LogoComponent from "../components/logo";
+import MenuComponent from "../components/menuComponent";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class ProductsScreen extends Component{
 
@@ -25,7 +28,7 @@ class ProductsScreen extends Component{
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <HeaderComponent back={"menu"} goback={this.back.bind(this)} right={"search"} style={{backgroundColor:'#f2f2f2', flex: 1, flexDirection:'row'}}/>
+                <HeaderComponent back={<MenuComponent/>} goback={this.back.bind(this)} right={<Icon name={"search"} size={25} color="#000000" />} center={<LogoComponent/>} style={{backgroundColor:'#f2f2f2', flex: 1, flexDirection:'row'}}/>
             </View>
             <View style={styles.body}>
                 <View style={styles.background}>

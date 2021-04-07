@@ -39,20 +39,6 @@ class CartCardComponent extends Component{
                       <Text>-</Text>
                     </TouchableOpacity>
                   </View>
-                    {/* <View style={styles.increaseButton} onPress={()=>this.props.increase(this.props.product)} >
-                      <TouchableOpacity>
-                      <Text style={styles.quantityText}>
-                        +
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                    
-                    <Text style={styles.quantityText}>{this.props.product.quantity}</Text>
-                    <TouchableOpacity style={styles.decreaseButton} onPress={()=>this.props.decrease(this.props.product)} >
-                        <Text style={styles.quantityText}>
-                        -
-                        </Text>
-                    </TouchableOpacity> */}
                 </View>
             </View>
         </View>

@@ -11,6 +11,8 @@ import ProductDetailsComponent from "../components/productDetailsComponent";
 import ProductPriceComponent from '../components/ProductPriceComponent';
 import HeaderComponent from "../components/headerComponent";
 import { connect } from 'react-redux';
+import LogoComponent from "../components/logo";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -180,7 +182,7 @@ class ProductDetailsScreen extends Component{
     return(
       <View style={styles.container}>
         <View style={styles.header}>
-          <HeaderComponent back={"arrow-back"} right={"heart-circle"} rightselect={this.props.route.params.isLiked} goback={this.back.bind(this)} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
+          <HeaderComponent back={<Icon name={"arrow-back"} size={25} color="#000000" />} right={<Icon name={"heart-circle"} size={25} color={this.props.route.params.isLiked == true? "red": "#000000"} />} rightselect={this.props.route.params.isLiked} goback={this.back.bind(this)} center={<LogoComponent/>} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
         </View>
         <View style={styles.body}>
             <View style={styles.main}>

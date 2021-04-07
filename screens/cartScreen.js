@@ -15,6 +15,9 @@ import CheckOutComponent from "../components/checkOutComponent";
 import HeaderComponent from "../components/headerComponent";
 import { QUANTITYCHANGE } from "../redux/actions/productActions";
 import { connect } from 'react-redux';
+import CartLogoComponent from "../components/cartLogo";
+import MenuComponent from "../components/menuComponent";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -97,12 +100,16 @@ class CartScreen extends Component{
     return(
       <View style={styles.maincontainer}>
         <View style={styles.header}>
-          <HeaderComponent back={"arrow-back"} goback={this.back.bind(this)} right={"ios-trash-bin-sharp"} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
+          <HeaderComponent back={<Icon name={"arrow-back"} size={25} color="#000000" />} goback={this.back.bind(this)} right={<Icon name={"ios-trash-bin-sharp"} size={25} color="#000000" />} center={<CartLogoComponent/>} style={{backgroundColor:'#ffffff', flex: 1, flexDirection:'row'}}/>
         </View>
         <View style={styles.body}>
           <View style={styles.container}>
             <View style={styles.cartItemsContainer}>
-            {(this.props.cartProducts.length == 0) && (<Text>Cart is empty</Text>)}
+            {(this.props.cartProducts.length == 0) && (
+              <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
+                <Text style={{fontFamily:'Poppins-SemiBold', fontSize:20, color:'#000000'}}>Cart is empty</Text>
+              </View>
+            )}
             {(!this.props.cartProducts.length == 0) && (
               <ScrollView  showsVerticalScrollIndicator={false}>
                 <FlatList

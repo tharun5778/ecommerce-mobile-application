@@ -18,6 +18,7 @@ function MainTab() {
 
               if (route.name === 'Home') {
                 iconName = 'ios-home'
+                
               } else if (route.name === 'cart') {
                 iconName = 'cart';
               }

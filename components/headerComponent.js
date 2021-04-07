@@ -19,15 +19,16 @@ class HeaderComponent extends Component{
         <View style={this.props.style}>
             <TouchableOpacity style={styles.back} onPress={()=>this.props.goback()}>
                 <Text>
-                    <Icon name={this.props.back} size={25} color="#000000" />
+                    {this.props.back}
                 </Text>
             </TouchableOpacity>
             <View style={styles.logo}>
-                <Text>Logo</Text>
+                <Text>{this.props.center}</Text>
             </View>
             <TouchableOpacity style={styles.item}>
                 <View style={styles.itemCenter}>
-                    <Icon name={this.props.right} size={25} color={this.props.rightselect == true? "red": "#000000"} />
+                    {/* <Icon name={this.props.right} size={25} color={this.props.rightselect == true? "red": "#000000"} /> */}
+                    {this.props.right}
                 </View>
             </TouchableOpacity>
         </View>
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
     logo: {
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:2
     },
     item: {
         flex:1,
