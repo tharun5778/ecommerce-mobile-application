@@ -13,6 +13,7 @@ import HeaderComponent from "../components/headerComponent";
 import { connect } from 'react-redux';
 import LogoComponent from "../components/logo";
 import Icon from 'react-native-vector-icons/Ionicons';
+import ProductDetailsImageComponent from "../components/productDetailsImageComponent";
 
 
 
@@ -28,7 +29,26 @@ class ProductDetailsScreen extends Component{
       isAdded:false,
       offer:'',
       id:'',
-      rating:0
+      rating:0,
+      ColorSelected:null,
+      images: [
+                {
+                  image:require("../assets/iphone.jpg"),
+                  color:"#3e9e9e"
+                },
+                {
+                  image:require('../assets/shoe1.jpg'),
+                  color:"#261123"
+                },
+                {
+                  image:require('../assets/shoe3.jpg'),
+                  color:"#db7d7d"
+                },
+                {
+                  image:require('../assets/shoe4.jpg'),
+                  color:"#619946"
+                },
+              ]
     };
   }
   componentDidMount(){
@@ -170,7 +190,7 @@ class ProductDetailsScreen extends Component{
         i.isSelected = false
       }
     })
-    this.setState({colour: allColours})
+    this.setState({colour: allColours,ColorSelected: selectedColour})
   }
 
   back(){
@@ -195,7 +215,8 @@ class ProductDetailsScreen extends Component{
             </View>
             <View style={styles.background_1}>
               <View style={styles.image}>
-                <Image source={require('../assets/iphone.jpg')} style={{width:250, height:250}}/>
+                <ProductDetailsImageComponent selectColour={this.state.ColorSelected} data={this.state.images}/>
+                {/* <Image source={require('../assets/iphone.jpg')} style={{width:250, height:250}}/> */}
               </View>
               <View style={styles.background_2}>
                 <View style={styles.details}>

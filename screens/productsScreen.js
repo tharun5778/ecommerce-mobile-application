@@ -24,7 +24,7 @@ class ProductsScreen extends Component{
     }
 
   render(){
-    //   console.log(this.props.products)
+      console.log("hello",this.props.products)
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -100,6 +100,7 @@ const mapStateToProps = state => {
     return {
         products: state.products,
     };
+    // console.log(state)
 };
 export default connect(mapStateToProps)(ProductsScreen);
 
