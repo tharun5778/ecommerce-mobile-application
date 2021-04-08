@@ -1,35 +1,69 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   View,
   StyleSheet,
-  Image,Text
+  Image,Text,
+  Animated
 } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
 // import {  } from "../assets/";
 
 
-class ProductDetailsImageComponent extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-          images: [
+class ImageLoader extends Component {
+    state = {
+        opacity : new Animated.Value(0),
+    }
+
+    onLoad = () => {
+        Animated.timing(this.state.opacity, {
+            toValue: 1,
+            duration: 500,
+            useNativeDriver: true,
+        }).start();
+    }
+
+    render(){
+        return(
+            <Animated.Image
+                onLoad={this.onLoad}
+                {...this.props}
+                style={[
+                    {
+                        opacity:this.state.opacity,
+                        transform:[
+                            {
+                                scale:this.state.opacity.interpolate({
+                                    inputRange: [0,1],
+                                    outputRange: [0.85,1],
+                                })
+                            }
+                        ]
+                    },
+                    this.props.style,
+                ]}
+            />
+        )
+    }
+}
+
+const ProductDetailsImageComponent =(props) =>{
+
+        const images= [
             require('../assets/iphone.jpg'),
             require('../assets/shoe1.jpg'),
             require('../assets/shoe3.jpg'),
             require('../assets/shoe4.jpg'),
-          ]
-        };
-      }
+          ];
+
     
-  render(){
+
     return(
         <View>
-            {(this.props.selectColour == null) && (
+            {(props.selectColour == null) && (
                 <View>
                     <SliderBox
-                        images={this.state.images}
+                        images={images}
                         sliderBoxHeight={300}
-                        // onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
                         dotColor="#FFEE58"
                         disableOnPress={true}
                         inactiveDotColor="#90A4AE"
@@ -46,26 +80,12 @@ class ProductDetailsImageComponent extends Component{
                     />
                 </View>
             )}
-            {(this.props.selectColour != null) && (
-                // <View>
-                //     {this.props.data.map((i)=>{
-                //         if(i.color == this.props.selectColour){
-                //             return(
-                //                 <View>
-                //                     {/* <Text>{ i.image}</Text> */}
-                //                     {/* <Image source={i.image} style={{width:250, height:250}}/> */}
-                //                     {/* <Image source={require('../assets/iphone.jpg')} style={{width:250, height:250}}/> */}
-
-                //                 </View>
-                //             )
-                //         }
-                //     })}
-                // </View>
+            {(props.selectColour != null) && (
                 <View>
-                    {this.props.data.map((i)=>{
-                        if(i.color == this.props.selectColour){
+                    {props.data.map((i)=>{
+                        if(i.color == props.selectColour){
                             return(
-                                <Image source={i.image} style={{width:300, height:300}}/>
+                                <ImageLoader source={i.image} style={{width:300, height:300}}/>
                             )
                         }
                     })}
@@ -75,10 +95,10 @@ class ProductDetailsImageComponent extends Component{
             
         </View>
     )
-  }
+
 }
 
 export default ProductDetailsImageComponent;
 
-const styles = StyleSheet.create({
-})
+// const styles = StyleSheet.create({
+// })
